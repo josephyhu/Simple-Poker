@@ -5,9 +5,9 @@ Completed hands:
 * Straight Flush
 * Four of a Kind
 * Full House
+* Flush
 
 Incomplete hands:
-* Flush
 * Straight
 * Three of a Kind
 * Two Pair
