@@ -64,8 +64,4 @@ for i in range(13):
 for i in range(9):
     FLUSH_D.remove(straight_flush_d[i])
 
-FLUSH = []
-FLUSH.extend(FLUSH_S)
-FLUSH.extend(FLUSH_C)
-FLUSH.extend(FLUSH_H)
-FLUSH.extend(FLUSH_D)
+FLUSH = FLUSH_S + FLUSH_C + FLUSH_H + FLUSH_D
