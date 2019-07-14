@@ -155,47 +155,47 @@ STRAIGHT = ({random.choice([S, C, H, D])[0], random.choice([S, C, H, D])[1],
 # Also: Add a betting system.
 def start_game():
     deck = copy.deepcopy(DECK)
-    p_score = 0
-    c_score = 0
-    p_hand = set(random.sample(deck, 5))
-    for i in p_hand:
+    p1_score = 0
+    p2_score = 0
+    p1_hand = set(random.sample(deck, 5))
+    for i in p1_hand:
         deck.remove(i)
-    c_hand = set(random.sample(deck, 5))
+    p2_hand = set(random.sample(deck, 5))
     while True:
-        print("Player:", p_hand)
-        print("Computer:", c_hand)
-        if p_hand in ROYAL_FLUSH:
-            p_score = 5
-        elif p_hand in STRAIGHT_FLUSH and p_hand not in ROYAL_FLUSH:
-            p_score = 4
-        elif p_hand in FOUR_OF_A_KIND:
-            p_score = 3
-        elif p_hand in FLUSH and p_hand not in STRAIGHT_FLUSH:
-            p_score = 2
-        elif p_hand in STRAIGHT and p_hand not in STRAIGHT_FLUSH:
-            p_score = 1
+        print("Player 1:", p1_hand)
+        print("Player 2:", p2_hand)
+        if p1_hand in ROYAL_FLUSH:
+            p1_score = 5
+        elif p1_hand in STRAIGHT_FLUSH and p1_hand not in ROYAL_FLUSH:
+            p1_score = 4
+        elif p1_hand in FOUR_OF_A_KIND:
+            p1_score = 3
+        elif p1_hand in FLUSH and p1_hand not in STRAIGHT_FLUSH:
+            p1_score = 2
+        elif p1_hand in STRAIGHT and p1_hand not in STRAIGHT_FLUSH:
+            p1_score = 1
         else:
-            p_score = 0
-        if c_hand in ROYAL_FLUSH:
-            c_score = 5
-        elif c_hand in STRAIGHT_FLUSH and c_hand not in ROYAL_FLUSH:
-            c_score = 4
-        elif c_hand in FOUR_OF_A_KIND:
-            c_score = 3
-        elif c_hand in FLUSH and c_hand not in STRAIGHT_FLUSH:
-            c_score = 2
-        elif c_hand in STRAIGHT and c_hand not in STRAIGHT_FLUSH:
-            c_score = 1
+            p1_score = 0
+        if p2_hand in ROYAL_FLUSH:
+            p2_score = 5
+        elif p2_hand in STRAIGHT_FLUSH and p2_hand not in ROYAL_FLUSH:
+            p2_score = 4
+        elif p2_hand in FOUR_OF_A_KIND:
+            p2_score = 3
+        elif p2_hand in FLUSH and p2_hand not in STRAIGHT_FLUSH:
+            p2_score = 2
+        elif c_hand in STRAIGHT and p2_hand not in STRAIGHT_FLUSH:
+            p2_score = 1
         else:
-            c_score = 0
-        if p_score > c_score:
-            print("You win!")
+            p2_score = 0
+        if p1_score > p2_score:
+            print("Player 1 wins!")
             break
-        elif p_score == c_score:
+        elif p1_score == p2_score:
             print("It's a draw!")
             break
         else:
-            print("You lose!")
+            print("Player 2 wins!")
             break
 
 
