@@ -1,4 +1,4 @@
-A very simple unfinished player vs. computer poker game.
+A very simple unfinished two player poker game.
 
 Royal flush and straight flush hands complete.
 Four of a kind, flush, and straight hands incomplete.
