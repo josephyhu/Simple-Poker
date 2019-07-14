@@ -1,3 +1,4 @@
+
 import random
 import copy
 import deck
@@ -38,6 +39,8 @@ def start_game():
             p1_score = 8
         elif p1_hand in four_of_a_kind:
             p1_score = 7
+        elif p1_hand in full_house:
+            p1_score = 6
         else:
             p1_score = 0
         if p2_hand in royal_flush:
@@ -46,6 +49,8 @@ def start_game():
             p2_score = 8
         elif p2_hand in four_of_a_kind:
             p2_score = 7
+        elif p2_hand in full_house:
+            p2_score = 6
         else:
             p2_score = 0
         if p1_score > p2_score:
@@ -73,6 +78,7 @@ if __name__ == '__main__':
     royal_flush = copy.deepcopy(straight_flush.ROYAL_FLUSH)
     straight_flush = copy.deepcopy(straight_flush.STRAIGHT_FLUSH)
     four_of_a_kind = copy.deepcopy(four_of_a_kind.FOUR_OF_A_KIND)
+    full_house = copy.deepcopy(full_house.FULL_HOUSE)
     start_game()
     while True:
         if play_again() == True:
