@@ -21,54 +21,57 @@ DECK = S + C + H + D
 
 # To do: Modify the game so that the higher card
 #        (in case of both hands of the same type (e.g., two flushes)) wins.
-# Also: Add a betting system.
 def start_game():
     deck = copy.deepcopy(DECK)
-    p1_score = 0
-    p2_score = 0
-    p1_hand = set(random.sample(deck, 5))
-    for i in p1_hand:
+    p_score = 0
+    c_score = 0
+    p_hand = set(random.sample(deck, 5))
+    for i in p_hand:
         deck.remove(i)
-    p2_hand = set(random.sample(deck, 5))
+    c_hand = set(random.sample(deck, 5))
     while True:
-        print("Player 1:", p1_hand)
-        print("Player 2:", p2_hand)
-        if p1_hand in royal_flush:
-            p1_score = 9
-        elif p1_hand in straight_flush:
-            p1_score = 8
-        elif p1_hand in four_of_a_kind:
-            p1_score = 7
-        elif p1_hand in full_house:
-            p1_score = 6
-        elif p1_hand in flush:
-            p1_score = 5
-        elif p1_hand in straight:
-            p1_score = 4
+        print("Player:", p_hand)
+        print("Computer:", c_hand)
+        if p_hand in royal_flush:
+            p_score = 9
+        elif p_hand in straight_flush:
+            p_score = 8
+        elif p_hand in four_of_a_kind:
+            p_score = 7
+        elif p_hand in full_house:
+            p_score = 6
+        elif p_hand in flush:
+            p_score = 5
+        elif p_hand in straight:
+            p_score = 4
+        elif p_hand in three_of_a_kind:
+            p_score = 3
         else:
-            p1_score = 0
-        if p2_hand in royal_flush:
-            p2_score = 9
-        elif p2_hand in straight_flush:
-            p2_score = 8
-        elif p2_hand in four_of_a_kind:
-            p2_score = 7
-        elif p2_hand in full_house:
-            p2_score = 6
-        elif p2_hand in flush:
-            p2_score = 5
-        elif p2_hand in straight:
-            p2_score = 4
+            p_score = 0
+        if c_hand in royal_flush:
+            c_score = 9
+        elif c_hand in straight_flush:
+            c_score = 8
+        elif c_hand in four_of_a_kind:
+            c_score = 7
+        elif c_hand in full_house:
+            c_score = 6
+        elif c_hand in flush:
+            c_score = 5
+        elif c_hand in straight:
+            c_score = 4
+        elif c_hand in three_of_a_kind:
+            c_score = 3
         else:
-            p2_score = 0
-        if p1_score > p2_score:
-            print("Player 1 wins!")
+            c_score = 0
+        if p_score > c_score:
+            print("You win!")
             break
-        elif p1_score == p2_score:
+        elif p_score == c_score:
             print("It's a draw!")
             break
         else:
-            print("Player 2 wins!")
+            print("You lose!")
             break
 
 
@@ -89,6 +92,7 @@ if __name__ == '__main__':
     full_house = copy.deepcopy(full_house.FULL_HOUSE)
     flush = copy.deepcopy(flush.FLUSH)
     straight = copy.deepcopy(straight.STRAIGHT)
+    three_of_a_kind = copy.deepcopy(three_of_a_kind.THREE_OF_A_KIND)
     start_game()
     while True:
         if play_again() == True:
