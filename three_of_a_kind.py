@@ -536,5 +536,3 @@ lst2 = list(set(lst2))
 
 for i in lst2:
     THREE_OF_A_KIND.append(set(i))
-
-print(len(THREE_OF_A_KIND))

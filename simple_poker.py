@@ -19,62 +19,6 @@ D = copy.deepcopy(deck.DIAMONDS)
 DECK = S + C + H + D
 
 
-# To do: Modify the game so that the higher card
-#        (in case of both hands of the same type (e.g., two flushes)) wins.
-def start_game():
-    deck = copy.deepcopy(DECK)
-    p_score = 0
-    c_score = 0
-    p_hand = set(random.sample(deck, 5))
-    for i in p_hand:
-        deck.remove(i)
-    c_hand = set(random.sample(deck, 5))
-    while True:
-        print("Player:", p_hand)
-        print("Computer:", c_hand)
-        if p_hand in royal_flush:
-            p_score = 9
-        elif p_hand in straight_flush:
-            p_score = 8
-        elif p_hand in four_of_a_kind:
-            p_score = 7
-        elif p_hand in full_house:
-            p_score = 6
-        elif p_hand in flush:
-            p_score = 5
-        elif p_hand in straight:
-            p_score = 4
-        elif p_hand in three_of_a_kind:
-            p_score = 3
-        else:
-            p_score = 0
-        if c_hand in royal_flush:
-            c_score = 9
-        elif c_hand in straight_flush:
-            c_score = 8
-        elif c_hand in four_of_a_kind:
-            c_score = 7
-        elif c_hand in full_house:
-            c_score = 6
-        elif c_hand in flush:
-            c_score = 5
-        elif c_hand in straight:
-            c_score = 4
-        elif c_hand in three_of_a_kind:
-            c_score = 3
-        else:
-            c_score = 0
-        if p_score > c_score:
-            print("You win!")
-            break
-        elif p_score == c_score:
-            print("It's a draw!")
-            break
-        else:
-            print("You lose!")
-            break
-
-
 def play_again():
     replay = input("Play again (y/n)? ")
     while replay.lower() != 'y' and replay.lower() != 'n':
@@ -85,6 +29,11 @@ def play_again():
         return False
 
 
+def display_score(p_score, c_score):
+    print("Score")
+    print("You: {} | Computer: {}".format(p_score, c_score))
+
+
 if __name__ == '__main__':
     royal_flush = copy.deepcopy(straight_flush.ROYAL_FLUSH)
     straight_flush = copy.deepcopy(straight_flush.STRAIGHT_FLUSH)
@@ -93,10 +42,76 @@ if __name__ == '__main__':
     flush = copy.deepcopy(flush.FLUSH)
     straight = copy.deepcopy(straight.STRAIGHT)
     three_of_a_kind = copy.deepcopy(three_of_a_kind.THREE_OF_A_KIND)
-    start_game()
+    two_pair = copy.deepcopy(two_pair.TWO_PAIR)
+    p_points = 0
+    c_points = 0
+    p_score = 0
+    c_score = 0
     while True:
-        if play_again() == True:
-            start_game()
+        display_score(p_score, c_score)
+        deck = copy.deepcopy(DECK)
+        p_hand = set(random.sample(deck, 5))
+        for i in p_hand:
+            deck.remove(i)
+        c_hand = set(random.sample(deck, 5))
+        print("You:", p_hand)
+        print("Computer:", c_hand)
+        if p_hand in royal_flush:
+            p_points = 9
+        elif p_hand in straight_flush:
+            p_points = 8
+        elif p_hand in four_of_a_kind:
+            p_points = 7
+        elif p_hand in full_house:
+            p_points = 6
+        elif p_hand in flush:
+            p_points = 5
+        elif p_hand in straight:
+            p_points = 4
+        elif p_hand in three_of_a_kind:
+            p_points = 3
+        elif p_hand in two_pair:
+            p_points = 2
         else:
-            print("Goodbye!")
-            break
+            p_points = 0
+        if c_hand in royal_flush:
+            c_points = 9
+        elif c_hand in straight_flush:
+            c_points = 8
+        elif c_hand in four_of_a_kind:
+            c_points = 7
+        elif c_hand in full_house:
+            c_points = 6
+        elif c_hand in flush:
+            c_points = 5
+        elif c_hand in straight:
+            c_points = 4
+        elif c_hand in three_of_a_kind:
+            c_points = 3
+        elif c_hand in two_pair:
+            c_points = 2
+        else:
+            c_points = 0
+        if p_points > c_points:
+            print("You win!")
+            p_score += 1
+            if play_again() == True:
+                continue
+            else:
+                print("Goodbye!")
+                break
+        elif p_points == c_points:
+            print("It's a draw!")
+            if play_again() == True:
+                continue
+            else:
+                print("Goodbye!")
+                break
+        else:
+            print("You lose!")
+            c_score += 1
+            if play_again() == True:
+                continue
+            else:
+                print("Goodbye!")
+                break

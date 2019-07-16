@@ -1,4 +1,6 @@
-A very simple unfinished player vs computer poker game.
+Update: Added a scoring system.
+
+A very simple almost finished player vs. computer poker game.
 
 Completed hands:
 * Royal Flush
@@ -8,9 +10,9 @@ Completed hands:
 * Flush
 * Straight
 * Three of a Kind
+* Two Pair
 
 Incomplete hands:
-* Two Pair
 * One Pair
 
 Issues:
