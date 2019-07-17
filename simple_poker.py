@@ -9,7 +9,6 @@ import flush
 import straight
 import three_of_a_kind
 import two_pair
-import one_pair
 
 S = copy.deepcopy(deck.SPADES)
 C = copy.deepcopy(deck.CLUBS)
